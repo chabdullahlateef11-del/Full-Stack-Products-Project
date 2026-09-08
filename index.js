@@ -20,10 +20,11 @@ connectDB();
 
 app.use("/api/products", productRoutes);
 
-app.get("*", (req, res) => {
+app.get(/^(?!\/api).*/, (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(5050, () => {
-    console.log("Server is running on port 5050");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

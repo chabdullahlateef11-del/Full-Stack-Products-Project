@@ -20,6 +20,7 @@ connectDB();
 
 app.use("/api/products", productRoutes);
 
+
 app.get(/^(?!\/api).*/, (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
 });
